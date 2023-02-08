@@ -1,0 +1,16 @@
+name: Flist
+on:
+  workflow_run:
+    workflows: ["Docker"]
+    types:
+      - completed
+env: 
+   version: '0.0.1'
+jobs:
+  curl:
+    runs-on: ubuntu-latest
+    steps:
+    - name: curl
+      uses: wei/curl@master
+      with:
+        args: '-X POST -d "image=${{secrets.DOCKER_USERNAME}}/umbrel:${{env.version}}" -H "${{ secrets.ZERO_HUB_TOKEN }}" https://hub.grid.tf/api/flist/me/docker'
