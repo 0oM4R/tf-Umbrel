@@ -1,0 +1,7 @@
+exec: |
+  bash -c '
+    chmod +x ./yq.sh
+    ./yq.sh
+  '
+test : yq -V
+oneshot: true

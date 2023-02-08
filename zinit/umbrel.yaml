@@ -1,0 +1,7 @@
+exec: /bin/bash -c "
+    cd /umbrel;
+    docker-compose up --build --remove-orphans;" 
+test:  /bin/bash -c "pgrep docker-compose"
+after:
+ - dockerd
+ - yq
