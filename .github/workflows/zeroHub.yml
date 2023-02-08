@@ -13,4 +13,4 @@ jobs:
     - name: curl
       uses: wei/curl@master
       with:
-        args: -X POST -d "image=${{secrets.DOCKER_USERNAME}}/umbrel:${{env.version}}" -H "Authorization: bearer ${{ secrets.ZERO_HUB_TOKEN }}" https://hub.grid.tf/api/flist/me/docker
+        args: -X POST -d "image=${{secrets.DOCKER_USERNAME}}/umbrel:${{env.version}}" -H "${{ secrets.ZERO_HUB_TOKEN }}" https://hub.grid.tf/api/flist/me/docker
