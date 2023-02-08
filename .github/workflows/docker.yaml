@@ -27,6 +27,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: curl
-      uses: wei/curl@master
-      with:
-        args: -X POST -d "image=${{secrets.DOCKER_USERNAME}}/umbrel:${{env.version}}" -H ${{ secrets.ZERO_HUB_TOKEN }} https://hub.grid.tf/api/flist/me/docker
+      run: sudo apt-get install -y curl
+    - name: do
+      run: curl -X POST -d "image=${{secrets.DOCKER_USERNAME}}/umbrel:${{env.version}}" -H ${{ secrets.ZERO_HUB_TOKEN }} https://hub.grid.tf/api/flist/me/docker
