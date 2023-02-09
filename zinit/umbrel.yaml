@@ -5,3 +5,4 @@ test:  /bin/bash -c "pgrep docker-compose"
 after:
  - dockerd
  - yq
+ - config
