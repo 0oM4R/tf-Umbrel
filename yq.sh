@@ -8,8 +8,6 @@
   system_arch=$(dpkg --print-architecture);
   yq_binary="yq_linux_${system_arch}";
 
-  # config sudo 
-  usermod -aG sudo root;
   # Download yq from GitHub
   yq_temp_file="/tmp/yq";
   curl -L "https://github.com/mikefarah/yq/releases/download/${yq_version}/${yq_binary}" -o "${yq_temp_file}";

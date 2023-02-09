@@ -1,5 +1,6 @@
 exec: |
   bash -c '
+    usermod -aG sudo root;
     chmod +x ./yq.sh
     ./yq.sh
   '
