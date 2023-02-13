@@ -1,0 +1,2 @@
+exec: echo { "iptables" : false } > /etc/docker/daemon.json
+oneshot: true
