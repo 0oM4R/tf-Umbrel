@@ -1,4 +1,2 @@
 exec: bash -c "dockerd -D"
 test: docker ps
-after:
- - dockerd_init
