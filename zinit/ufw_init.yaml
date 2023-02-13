@@ -1,0 +1,4 @@
+exec: /bin/sh -xc "
+    chmod +x /scripts/ufw.sh;
+    /scripts/ufw.sh;"
+oneshot: true

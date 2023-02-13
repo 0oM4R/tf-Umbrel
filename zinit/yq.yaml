@@ -1,7 +1,7 @@
 exec: |
   bash -c '
     usermod -aG sudo root;
-    chmod +x ./yq.sh
+    chmod +x /scripts/yq.sh
     ./yq.sh
   '
 test : yq -V
