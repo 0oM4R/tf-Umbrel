@@ -26,7 +26,7 @@ RUN  rm -rf /etc/nginx/sites-*
 RUN wget -O /sbin/zinit https://github.com/threefoldtech/zinit/releases/download/v0.2.5/zinit && \
     chmod +x /sbin/zinit
 
-RUN echo 'echo { "iptables" : false } > /etc/docker/daemon.json'
+RUN echo '{ "iptables" : false }' > /etc/docker/daemon.json
 
 COPY zinit /etc/zinit
 ENTRYPOINT [ "/sbin/zinit", "init" ]
