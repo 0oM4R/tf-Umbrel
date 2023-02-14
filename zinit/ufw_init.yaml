@@ -1,4 +1,2 @@
-exec: /bin/sh -xc "
-    chmod +x /scripts/ufw.sh;
-    /scripts/ufw.sh;"
+exec: /bin/sh -xc "/scripts/ufw.sh;"
 oneshot: true
