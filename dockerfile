@@ -19,7 +19,8 @@ COPY ./scripts /scripts
 RUN version=$(get_umbrel_version); \
     curl --location "https://api.github.com/repos/${UMBREL_REPO}/tarball/${version}" | \
     tar --extract --gzip --strip-components=1 --directory="${UMBREL_INSTALL_PATH}"; \
-    sed --i  's/--detach//g' ${UMBREL_INSTALL_PATH}/scripts/start ;
+    sed --i '/--detach/,${s// /;b};$q1' ${UMBREL_INSTALL_PATH}/scripts/start || echo faild;
+
 
 COPY nginx/* /etc/nginx/conf.d/
 RUN  rm -rf /etc/nginx/sites-*
