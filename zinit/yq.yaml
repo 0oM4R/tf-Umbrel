@@ -1,7 +1,0 @@
-exec: |
-  bash -c '
-    usermod -aG sudo root;
-    /scripts/yq.sh
-  '
-test : yq -V
-oneshot: true

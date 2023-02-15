@@ -15,7 +15,8 @@ RUN curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-c
 RUN mkdir -p ${UMBREL_INSTALL_PATH}; \
     mkdir -p /etc/zinit;
 COPY ./scripts /scripts
-RUN chmod -R +x /scripts
+RUN chmod -R +x /scripts; \
+    /scripts/yq
 
 RUN version=$(get_umbrel_version); \
     curl --location "https://api.github.com/repos/${UMBREL_REPO}/tarball/${version}" | \

@@ -3,4 +3,3 @@ exec: /bin/bash -c "/umbrel/scripts/configure"
 oneshot: true
 after:
  - dockerd
- - yq
