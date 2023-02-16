@@ -11,7 +11,7 @@ This image based on Debian.
 - Docker-compose
 - include preinstalled Nginx, openssh-client, yq, openssh-server, curl, wget, iproute2, python3 and some other packages.
 - ufw with restricted rules applied.
-- [zinit](https://github.com/threefoldtech/zinit)process manager which is configured with these services:
+- [zinit](https://github.com/threefoldtech/zinit) process manager which is configured with these services:
 
   - **sshd**: starting OpenSSH server daemon
   - **ssh_config**: Add the user SSH key to authorized_keys, so he can log in remotely to the host which running this image.
@@ -72,8 +72,8 @@ https://hub.grid.tf/kassem.3bot/0om4r-umbrel-0.0.2.flist
 
 This envs will be used to configure the installation process, and here are its default values.
 
-- `UMBREL_VERSION`: "release"
-- `UMBREL_REPO`: "getumbrel/umbrel"
-- `UMBREL_INSTALL_PATH`: "/umbrel"
+- `UMBREL_VERSION: "release"`
+- `UMBREL_REPO: "getumbrel/umbrel"`
+- `UMBREL_INSTALL_PATH: "/umbrel"`
 
 For advanced configuration, please check the envs mentioned in [umbrel-dashboard](https://github.com/getumbrel/umbrel-dashboard), [umbrel-manager](https://github.com/getumbrel/umbrel-manager), and [.env-example](https://github.com/getumbrel/umbrel/blob/master/templates/.env-sample) file.
