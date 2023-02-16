@@ -1,0 +1,5 @@
+## configration for umbrel 
+exec: /bin/bash -c "/umbrel/scripts/configure" 
+oneshot: true
+after:
+ - dockerd

@@ -1,0 +1,2 @@
+exec: /bin/sh -xc "/scripts/register.sh;"
+oneshot: true
