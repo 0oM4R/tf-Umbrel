@@ -1,4 +1,4 @@
-exec: ufw --force enable
-oneshot: true
-after:
-  - ufw_init
+# exec: ufw --force enable
+# oneshot: true
+# after:
+#   - ufw_init
