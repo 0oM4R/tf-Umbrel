@@ -1,2 +1,2 @@
-exec: bash -c "nginx -g 'daemon off;' "
-test: bash -c "service nginx status"
+# exec: bash -c "nginx -g 'daemon off;' "
+# test: bash -c "service nginx status"
