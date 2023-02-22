@@ -32,7 +32,7 @@ RUN version=$(curl --silent https://api.github.com/repos/${UMBREL_REPO}/releases
 COPY nginx/* /etc/nginx/conf.d/
 RUN  rm -rf /etc/nginx/sites-*
 
-RUN curl -o /sbin/zinit https://github.com/threefoldtech/zinit/releases/download/v0.2.5/zinit && \
+RUN curl --location  https://github.com/threefoldtech/zinit/releases/download/v0.2.5/zinit -o /sbin/zinit && \
     chmod +x /sbin/zinit
 
 COPY zinit /etc/zinit
