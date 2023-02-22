@@ -1,5 +1,6 @@
-exec: /bin/bash -c "
+exec: /bin/bash -xc "
     cd /umbrel;
+    ./scripts/install --no-install-docker --no-install-compose --no-install-avahi --no-install-yq --no-install-umbrel
     ./scripts/start;
     " 
 # test:  /bin/bash -c "pgrep docker-compose"
