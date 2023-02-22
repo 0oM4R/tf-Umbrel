@@ -4,6 +4,7 @@ ENV DEBIAN_FRONTEND=noninteractive \
     UMBREL_VERSION="release" \
     UMBREL_REPO="getumbrel/umbrel" \
     UMBREL_INSTALL_PATH="/home/umbrel" \
+    APP_DATA_DIR="/kassem" \
     NGINX_PORT=88
 
 RUN apt update && \
