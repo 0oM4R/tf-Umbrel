@@ -1,6 +1,6 @@
 exec: /bin/bash -c "
     echo $NGINX_PORT;
-    sudo curl -L https://umbrel.sh | bash -s -- --install-path /test/umbrel --no-install-deps --no-install-start-script"
+    sudo curl -L https://umbrel.sh | bash -s --  --no-install-deps --no-install-start-script"
 after:
  - dockerd
 #  - config
