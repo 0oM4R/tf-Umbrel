@@ -6,4 +6,4 @@ exec: /bin/bash -c "
 oneshot: true
 after:
  - dockerd
- - config
+#  - config
