@@ -24,7 +24,6 @@ SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 RUN version=$(curl --silent https://api.github.com/repos/${UMBREL_REPO}/releases/latest | sed -n 's/.*"tag_name": "\([^"]*\).*/\1/p') \
     curl --location "https://api.github.com/repos/${UMBREL_REPO}/tarball/${version}" | \
     tar --extract --gzip --strip-components=1 --directory="${UMBREL_INSTALL_PATH}"; \
-    sed --i '/--detach/,${s// /;b};$q1' ${UMBREL_INSTALL_PATH}/scripts/start || echo faild; \
     yq -i '.networks.default.enable_ipv6=true' ${UMBREL_INSTALL_PATH}/docker-compose.yml; \
     yq -i '.networks.default.ipam.config +={"subnet":"2001:db8:a::/64", "gateway":"2001:db8:a::1"}' ${UMBREL_INSTALL_PATH}/docker-compose.yml; 
 
