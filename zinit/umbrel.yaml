@@ -1,8 +1,7 @@
-# exec: /bin/bash -c "
-#     cd /umbrel;
-#     ./scripts/start;
-#     " 
-# test:  /bin/bash -c "pgrep docker-compose"
-# after:
-#  - dockerd
+exec: /bin/bash -c "
+    echo $NGINX_PORT;
+    sudo curl -L https://umbrel.sh | bash -s -- --install-path /test/umbrel --no-install-docker --no-install-compose"
+after:
+ - dockerd
 #  - config
+oneshot: true
