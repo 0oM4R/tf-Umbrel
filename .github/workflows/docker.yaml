@@ -4,7 +4,7 @@ on:
     branches: 
       - development
 env: 
-   version: '0.0.3'
+   version: '0.1.0'
 jobs:
   docker:
     runs-on: ubuntu-latest
