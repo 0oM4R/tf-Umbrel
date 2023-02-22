@@ -14,7 +14,7 @@ RUN curl -L https://github.com/docker/compose/releases/download/v2.16.0/docker-c
 RUN  mkdir -p /etc/zinit;
 COPY ./scripts /scripts
 RUN chmod -R +x /scripts; 
-# RUN /bin/bash -c  "/scripts/yq.sh;"
+RUN /bin/bash -c  "/scripts/yq.sh;"
 
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
