@@ -2,7 +2,8 @@ exec: /bin/bash -c "
     cd /umbrel;
     ./scripts/start;
     " 
-test:  /bin/bash -c "pgrep docker-compose"
+# test:  /bin/bash -c "pgrep docker-compose"
+oneshot: true
 after:
  - dockerd
  - config

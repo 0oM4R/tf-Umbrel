@@ -3,6 +3,8 @@ on:
   push:
     branches: 
       - development
+      - main 
+      - development_v_0
 env: 
    version: '0.0.3'
 jobs:
