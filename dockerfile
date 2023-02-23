@@ -2,8 +2,8 @@ FROM debian:stable-slim
 
 ARG DEBIAN_FRONTEND=noninteractive
 
-RUN apt update && \
-    apt -y install wget curl vim net-tools iputils-ping openssh-server docker.io \
+RUN apt-get update && \
+    apt-get -y install wget curl vim net-tools iputils-ping openssh-server docker.io \
     fswatch jq rsync sudo iproute2 git gettext-base python3 gnupg avahi-daemon avahi-discover libnss-mdns nginx ufw
 
 RUN curl -L https://github.com/docker/compose/releases/download/v2.16.0/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose && \
