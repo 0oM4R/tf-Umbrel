@@ -1,11 +1,12 @@
 #!/usr/bin/env bash
-set -exo pipefail
+set -eo pipefail
 FILE="${UMBREL_DISK}/umbrel/events/signals/reboot"
 if [ -f "$FILE" ] &&  grep -Fxq "true" "$FILE"
  then
     sed -i "\$d" "$FILE"
     echo rebooting
     docker stop $(docker ps -a -q);
+    sleep 5;
  else
     echo starting
 fi
@@ -79,7 +80,6 @@ echo "Starting Docker services..."
 echo
 docker-compose "${compose_files[@]}" up --detach --build --remove-orphans || {
   echo "Failed to start containers"
-  $set_status umbrel errored docker-failed
   exit 1
 }
 echo
