@@ -1,4 +1,4 @@
-exec: /bin/sh -xc "${UMBREL_DISK}/umbrel/scripts/register.sh;"
+exec: /bin/sh -xc "/scripts/register.sh;"
 oneshot: true
 after: 
   - umbrel
