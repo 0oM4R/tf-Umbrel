@@ -1,5 +1,6 @@
 exec: /bin/bash -xc "
     cd /umbrel;
+    ./scripts/start;
     docker-compose up;" 
 test:  /bin/bash -c "pgrep docker-compose"
 after:

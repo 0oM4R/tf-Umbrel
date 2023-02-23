@@ -25,7 +25,7 @@ RUN version=$(curl --silent https://api.github.com/repos/${UMBREL_REPO}/releases
     curl --location "https://api.github.com/repos/${UMBREL_REPO}/tarball/${version}" | \
     tar --extract --gzip --strip-components=1 --directory="${UMBREL_INSTALL_PATH}"; \
     sed -i  "s/up --detach --build --remove-orphans/pull/" ${UMBREL_INSTALL_PATH}/scripts/start \
-    sed -i 's/compose_files+=( "--file" "docker-compose.tor.yml" )/docker-compose --file docker-compose.tor.yml --detach --build --remove-orphans;/' ${UMBREL_INSTALL_PATH}/scripts/start;\
+    sed -i 's/.*docker-compose.tor.yml.*/docker-compose --file docker-compose.tor.yml up --detach --build --remove-orphans;/' ${UMBREL_INSTALL_PATH}/scripts/start;\
     yq -i '.networks.default.enable_ipv6=true' ${UMBREL_INSTALL_PATH}/docker-compose.yml; \
     yq -i '.networks.default.ipam.config +={"subnet":"2001:db8:a::/64", "gateway":"2001:db8:a::1"}' ${UMBREL_INSTALL_PATH}/docker-compose.yml; 
 
