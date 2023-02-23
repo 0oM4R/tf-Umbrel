@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-set -exuo pipefail
+set -exo pipefail
 FILE="${UMBREL_DISK}/umbrel/events/signals/reboot"
 if [ -f "$FILE" ] &&  grep -Fxq "true" "$FILE"
  then
