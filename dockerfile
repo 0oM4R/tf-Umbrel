@@ -25,6 +25,7 @@ RUN version=$(curl --silent https://api.github.com/repos/${UMBREL_REPO}/releases
     curl --location "https://api.github.com/repos/${UMBREL_REPO}/tarball/${version}" | \
     tar --extract --gzip --strip-components=1 --directory="${UMBREL_INSTALL_PATH}"; \
     # sed --i '/--detach/,${s// /;b};$q1' ${UMBREL_INSTALL_PATH}/scripts/start || echo faild; \
+    sed -i  '140,148d' ${UMBREL_INSTALL_PATH}/scripts/start \
     yq -i '.networks.default.enable_ipv6=true' ${UMBREL_INSTALL_PATH}/docker-compose.yml; \
     yq -i '.networks.default.ipam.config +={"subnet":"2001:db8:a::/64", "gateway":"2001:db8:a::1"}' ${UMBREL_INSTALL_PATH}/docker-compose.yml; 
 
