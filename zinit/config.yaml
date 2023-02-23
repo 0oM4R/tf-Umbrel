@@ -1,7 +1,5 @@
 # configration for umbrel 
-exec: /bin/bash -xc "
-  sed -i  "s/.*docker-compose.tor.yml.*/ docker-compose --file docker-compose.tor.yml up --detach --build --remove-orphans;/" /umbrel/scripts/start;
-  /umbrel/scripts/start" 
+exec: /bin/bash -xc '/scripts/umbrel-install;' 
 oneshot: true
 after:
  - dockerd
