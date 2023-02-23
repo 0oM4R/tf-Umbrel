@@ -1,5 +1,5 @@
 # configration for umbrel 
-exec: /bin/bash -xc '/scripts/umbrel-install;' 
+exec: /bin/bash -xc '/scripts/umbrel-install.sh;' 
 oneshot: true
 after:
  - dockerd

@@ -7,7 +7,7 @@ UMBREL_INSTALL_PATH="${UMBREL_DISK}/umbrel";
 
 
 echo "About to install Umbrel in \"${UMBREL_INSTALL_PATH}\"."
-
+mkdir -p "${UMBREL_INSTALL_PATH}"
 curl --location "https://api.github.com/repos/getumbrel/umbrel/tarball/${UMBREL_VERSION}" | \
 tar --extract --gzip --strip-components=1 --directory="${UMBREL_INSTALL_PATH}";
 
