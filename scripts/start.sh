@@ -1,19 +1,18 @@
 #!/usr/bin/env bash
-set -eo pipefail
-FILE="${UMBREL_DISK}/umbrel/events/signals/reboot"
-if [ -f "$FILE" ] &&  grep -Fxq "true" "$FILE"
+set -xeo pipefail
+UMBREL_ROOT="${UMBREL_DISK}/umbrel"
+UMBREL_LOGS="${UMBREL_ROOT}/logs"
+USER_FILE="${UMBREL_ROOT}/db/user.json"
+REBOOT="${UMBREL_ROOT}/events/signals/reboot"
+if [ -f "$REBOOT" ] &&  grep -Fxq "true" "$REBOOT"
  then
-    sed -i "\$d" "$FILE"
+    sed -i "\$d" "$REBOOT"
     echo rebooting
-    docker stop $(docker ps -a -q);
-    sleep 5;
+    $UMBREL_ROOT/scripts/stop
  else
     echo starting
 fi
 
-UMBREL_ROOT="${UMBREL_DISK}/umbrel"
-UMBREL_LOGS="${UMBREL_ROOT}/logs"
-USER_FILE="${UMBREL_ROOT}/db/user.json"
 
 # Configure Umbrel if it isn't already configured
 if [[ ! -f "${UMBREL_ROOT}/statuses/configured" ]]; then
