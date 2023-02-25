@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-set -xeo pipefail
+set -exo pipefail
 UMBREL_ROOT="${UMBREL_DISK}/umbrel"
 UMBREL_LOGS="${UMBREL_ROOT}/logs"
 USER_FILE="${UMBREL_ROOT}/db/user.json"
@@ -8,7 +8,7 @@ if [ -f "$REBOOT" ] &&  grep -Fxq "true" "$REBOOT"
  then
     sed -i "\$d" "$REBOOT"
     echo rebooting
-    $UMBREL_ROOT/scripts/stop
+    $UMBREL_ROOT/scripts/stop;
  else
     echo starting
 fi
