@@ -6,10 +6,9 @@ This image based on Debian.
 
 ## What in this image
 
-- [Umbrel](https://github.com/getumbrel/umbrel)
 - Docker
 - Docker-compose
-- include preinstalled Nginx, openssh-client, yq, openssh-server, curl, wget, iproute2, python3 and some other packages.
+- include preinstalled openssh-client, yq, openssh-server, curl, iproute2, python3 and some other packages.
 - ufw with restricted rules applied.
 - [zinit](https://github.com/threefoldtech/zinit) process manager which is configured with these services:
 
@@ -19,12 +18,21 @@ This image based on Debian.
   - **ufw-init**: define restricted firewall/iptables rules.
   - **ufw**: apply the pre-defined firewall rules
   > Docker edits iptables directly to setup port forwarding rules so it'll bypass any ufw rules we add, but we add it to close the ports that Docker does not use.
-  - **nginx**: run Nginx on port 88, to forward traffic to waiting page if the Umbrel is not ready.
   - **dockerd**: run docker daemon
-  - **register**: try to register with user credentials, if the curl returns `No route to host` it will sleep for 5 seconds and try again.
-  - **config**: run [Umbrel configuration script](https://github.com/getumbrel/umbrel/blob/master/scripts/configure)
-  - **Umbrel**: start Umbrel by running [Umbrel start script](https://github.com/getumbrel/umbrel/blob/master/scripts/start)
-    > We manipulate this script by running `sed` command to make the docker-compose running without `--detach` flag.
+  - **config**: run [umbrel-install](./scripts/umbrel-install.sh)
+    - this will install [Umbrel](https://github.com/getumbrel/umbrel) v0.5.3
+    - manipulate the [start](https://github.com/getumbrel/umbrel/blob/master/scripts/start) script to
+      - enable ipv6 in docker-compose using yq
+      - just pull the docker images of [docker-compose.yml](https://github.com/getumbrel/umbrel/blob/master/docker-compose.yml) instead of running them.
+      - run the [start](https://github.com/getumbrel/umbrel/blob/master/scripts/start) script with those modifications.
+  - **Umbrel**:
+    - start Umbrel by running [Umbrel-start](./scripts/umbrel-start.sh)
+      > This script is a modified version of the start script avoid some remote-access, installed apps, and restart issues.
+      - This script will check for the `REBOOT_SIGNAL_FILE` and if it exists and has `true`, it will run [stop](https://github.com/getumbrel/umbrel/blob/master/scripts/stop) script.
+      - it will run the a modified version of the start script to start Umbrel, and tor-server < if remote access enabled > and the installed apps.
+    - run `docker-compose up  --no-recreate;` only to make it monitored by zinit.
+      > `--no-recreate` used because the [umbrel-start](./scripts/umbrel-start.sh) script will run docker-compose up so no need to recreate any of them.
+  - **register**: try to register with user credentials, if the curl returns `No route to host` it will sleep for 2 seconds and try again.
 
 ## Building
 
@@ -53,7 +61,7 @@ or use the dedicated Umbrel weblet if available, which will deploy an instance t
 ### URL
 
 ````
-https://hub.grid.tf/kassem.3bot/0om4r-umbrel-0.0.2.flist
+https://hub.grid.tf/kassem.3bot/0om4r-umbrel-1.0.0.flist
 ````
 
 > TODO: should be updated to official repo.
@@ -70,10 +78,8 @@ https://hub.grid.tf/kassem.3bot/0om4r-umbrel-0.0.2.flist
 
 ### Optional Env Vars
 
-This envs will be used to configure the installation process, and here are its default values.
-
-- `UMBREL_VERSION: "release"`
-- `UMBREL_REPO: "getumbrel/umbrel"`
-- `UMBREL_INSTALL_PATH: "/umbrel"`
+- `UMBREL_DISK`
+  This env will be used to configure the installation process, to make Umbrel installed on `"${UMBREL_DISK}/umbrel"`
+  - If the UMBREL_DISK not specified, the install path will be `/umbrel`
 
 For advanced configuration, please check the envs mentioned in [umbrel-dashboard](https://github.com/getumbrel/umbrel-dashboard), [umbrel-manager](https://github.com/getumbrel/umbrel-manager), and [.env-example](https://github.com/getumbrel/umbrel/blob/master/templates/.env-sample) file.
