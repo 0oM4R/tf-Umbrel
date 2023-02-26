@@ -2,7 +2,7 @@ FROM debian:stable-slim
 
 RUN apt-get update && DEBIAN_FRONTEND=noninteractive\
     apt-get -qq install wget curl net-tools iputils-ping openssh-server docker.io \
-    fswatch jq rsync sudo iproute2 git gettext-base python3 gnupg avahi-daemon avahi-discover libnss-mdns nginx ufw \
+    fswatch jq rsync sudo iproute2 git gettext-base python3 gnupg avahi-daemon avahi-discover libnss-mdns ufw \
     && rm -rf /var/lib/apt/lists/*
 
 RUN curl -L https://github.com/docker/compose/releases/download/v2.16.0/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose && \
