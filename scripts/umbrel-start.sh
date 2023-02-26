@@ -3,6 +3,8 @@ set -exo pipefail
 UMBREL_ROOT="${UMBREL_DISK}/umbrel"
 UMBREL_LOGS="${UMBREL_ROOT}/logs"
 USER_FILE="${UMBREL_ROOT}/db/user.json"
+
+
 REBOOT="${UMBREL_ROOT}/events/signals/reboot"
 if [ -f "$REBOOT" ] &&  grep -Fxq "true" "$REBOOT"
  then
