@@ -2,9 +2,11 @@ name: Docker
 on:
   push:
     branches: 
-      - main
+      - development
+      - main 
+      - development_v_0
 env: 
-   version: '0.0.3'
+   version: '1.0.0'
 jobs:
   docker:
     runs-on: ubuntu-latest
