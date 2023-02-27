@@ -16,7 +16,7 @@ yq -i '.networks.default.enable_ipv6=true' ${UMBREL_INSTALL_PATH}/docker-compose
 yq -i '.networks.default.ipam.config +={"subnet":"2001:db8:a::/64", "gateway":"2001:db8:a::1"}' ${UMBREL_INSTALL_PATH}/docker-compose.yml; 
 
 # remove docker-compose up from start script
-sed -i "24i listen [::]:80;" ${UMBREL_INSTALL_PATH}/templates/nginx-sample.conf
+
 sed -i  "s/up --detach --build --remove-orphans/pull/" ${UMBREL_INSTALL_PATH}/scripts/start;
 # sed -i  "s/.*docker-compose.tor.yml.*/ docker-compose --file docker-compose.tor.yml up --detach --build --remove-orphans;/" ${UMBREL_INSTALL_PATH}/scripts/start;
 ${UMBREL_INSTALL_PATH}/scripts/start
