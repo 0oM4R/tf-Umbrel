@@ -9,15 +9,10 @@ This image based on Debian.
 - Docker
 - Docker-compose
 - include preinstalled openssh-client, yq, openssh-server, curl, iproute2, python3 and some other packages.
-- ufw with restricted rules applied.
 - [zinit](https://github.com/threefoldtech/zinit) process manager which is configured with these services:
 
   - **sshd**: starting OpenSSH server daemon
   - **ssh_config**: Add the user SSH key to authorized_keys, so he can log in remotely to the host which running this image.
-
-  - **ufw-init**: define restricted firewall/iptables rules.
-  - **ufw**: apply the pre-defined firewall rules
-  > Docker edits iptables directly to setup port forwarding rules so it'll bypass any ufw rules we add, but we add it to close the ports that Docker does not use.
   - **dockerd**: run docker daemon
   - **config**: run [umbrel-install](./scripts/umbrel-install.sh)
     - this will install [Umbrel](https://github.com/getumbrel/umbrel) v0.5.3
