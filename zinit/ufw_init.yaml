@@ -1,2 +1,2 @@
-exec: /bin/sh -xc "/scripts/ufw.sh;"
-oneshot: true
+# exec: /bin/sh -xc "/scripts/ufw.sh;"
+# oneshot: true
