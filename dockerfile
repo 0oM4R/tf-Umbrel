@@ -10,6 +10,7 @@ RUN curl -L https://github.com/docker/compose/releases/download/v2.16.0/docker-c
 
 
 COPY ./scripts /scripts
+COPY ./templates /templates
 RUN chmod -R +x /scripts; 
 RUN /bin/bash -c  "/scripts/yq.sh;"
 

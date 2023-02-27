@@ -6,7 +6,7 @@ on:
       - main 
       - development_v_0
 env: 
-   version: '0.0.6'
+   version: '0.0.5'
 jobs:
   docker:
     runs-on: ubuntu-latest
