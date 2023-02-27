@@ -18,5 +18,5 @@ yq -i '.networks.default.ipam.config +={"subnet":"2001:db8:a::/64", "gateway":"2
 # remove docker-compose up from start script
 
 sed -i  "s/up --detach --build --remove-orphans/pull/" ${UMBREL_INSTALL_PATH}/scripts/start;
-mv /templates ${UMBREL_INSTALL_PATH}/templates/nginx-sample.conf
+mv /templates/nginx-override.conf ${UMBREL_INSTALL_PATH}/templates/nginx-sample.conf
 ${UMBREL_INSTALL_PATH}/scripts/start
