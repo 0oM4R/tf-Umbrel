@@ -16,9 +16,9 @@ RUN /bin/bash -c  "/scripts/yq.sh;"
 
 
 
-RUN curl --location  https://github.com/threefoldtech/zinit/releases/download/v0.2.5/zinit -o /sbin/zinit && \
+RUN curl --location  https://github.com/threefoldtech/zinit/releases/download/v0.2.10/zinit -o /sbin/zinit && \
     chmod +x /sbin/zinit
 
 RUN mkdir -p /etc/zinit;
-COPY zinit /etc/zinit
+ADD zinit /sbin/zinit
 ENTRYPOINT [ "/sbin/zinit", "init" ]
