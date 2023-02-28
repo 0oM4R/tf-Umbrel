@@ -14,8 +14,8 @@
 
   # Check file matches checksum
   if [[ "$(sha256sum "${yq_temp_file}" | awk '{ print $1 }')" == "${yq_sha256[$system_arch]}" ]]; then
-    sudo mv "${yq_temp_file}" /usr/bin/yq;
-    sudo chmod +x /usr/bin/yq;
+    mv "${yq_temp_file}" /usr/bin/yq;
+    chmod +x /usr/bin/yq;
 
     echo "yq installed successfully..."
   else
