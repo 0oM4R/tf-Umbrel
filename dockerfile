@@ -20,5 +20,5 @@ RUN curl --location  https://github.com/threefoldtech/zinit/releases/download/v0
     chmod +x /sbin/zinit
 
 RUN mkdir -p /etc/zinit;
-ADD zinit /sbin/zinit
+COPY zinit /etc/zinit
 ENTRYPOINT [ "/sbin/zinit", "init" ]
