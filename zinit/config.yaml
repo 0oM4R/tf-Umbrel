@@ -1,5 +1,5 @@
 # configration for umbrel 
-exec: /bin/bash -xc '/scripts/umbrel-install.sh;' 
+exec: /bin/bash -euxo pipefail -c '/scripts/umbrel-install.sh;' 
 oneshot: true
 after:
  - dockerd

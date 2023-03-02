@@ -20,7 +20,8 @@ fi
 if [[ ! -f "${UMBREL_ROOT}/statuses/configured" ]]; then
   NGINX_PORT=${NGINX_PORT:-80} NETWORK="${NETWORK:-mainnet}" "${UMBREL_ROOT}/scripts/configure"
 fi
-
+# make sure that we use the correct nginx configuration
+cp /templates/nginx-override.conf ${UMBREL_INSTALL_PATH}/templates/nginx-sample.conf
 REMOTE_TOR_ACCESS="false"
 if [[ -f "${USER_FILE}" ]]; then
   REMOTE_TOR_ACCESS=$(cat "${USER_FILE}" | jq 'has("remoteTorAccess") and .remoteTorAccess')
